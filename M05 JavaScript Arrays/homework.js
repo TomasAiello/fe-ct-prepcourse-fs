@@ -23,8 +23,8 @@ function incrementarPorUno(array) {
    // El arreglo recibido por parámetro contiene números.
    // Retornar un arreglo con los elementos incrementados en +1.
    // Tu código:
-   for(i = 0; i <= array.lenght; i++){
-      array[i] = array[i] +1;
+   for(i = 0; i < array.length; i++){
+      array[i] = array[i] + 1;
    }
    return array;
 }
@@ -33,12 +33,16 @@ function agregarItemAlFinalDelArray(array, elemento) {
    // Agrega el "elemento" al final del arreglo recibido.
    // Retorna el arreglo.
    // Tu código:
+   array.push(elemento);
+   return array;
 }
 
 function agregarItemAlComienzoDelArray(array, elemento) {
    // Agrega el "elemento" al comienzo del arreglo recibido.
    // Retorna el arreglo.
    // Tu código:
+   array.unshift(elemento);
+   return array ;
 }
 
 function dePalabrasAFrase(palabras) {
@@ -47,30 +51,57 @@ function dePalabrasAFrase(palabras) {
    // con un espacio entre cada palabra.
    // Ejemplo: ['Hello', 'world!'] -> 'Hello world!'.
    // Tu código:
+   var frase = palabras[0];
+   for(i=1;i<palabras.length;i++){
+      frase = frase + ' ' + palabras[i];
+   }
+   return frase;
+   
 }
 
 function arrayContiene(array, elemento) {
    // Verifica si el elemento existe dentro del arreglo recibido.
    // Retornar true si está, o false si no está.
    // Tu código:
+   return array.includes(elemento);
+
 }
 
 function agregarNumeros(arrayOfNums) {
    // El parámetro "arrayOfNums" debe ser un arreglo de números.
    // Suma todos los elementos y retorna el resultado.
    // Tu código:
+   var resultado = 0;
+   for(i = 0; i<arrayOfNums.length ; i++){
+      resultado = resultado + arrayOfNums[i];
+   }
+   return resultado;
 }
 
 function promedioResultadosTest(resultadosTest) {
    // El parámetro "resultadosTest" es un arreglo de números.
    // Itera (en un bucle) los elementos del arreglo y devuelve el promedio de las notas.
    // Tu código:
+   var resultado = 0 ;
+   var acumulador = 0;
+   for (i=0;i<resultadosTest.length;i++){  
+      acumulador = acumulador + resultadosTest[i];
+   }
+   resultado = acumulador/resultadosTest.length;
+   return resultado;
 }
 
 function numeroMasGrande(arrayOfNums) {
    // El parámetro "arrayOfNums" es un arreglo de números.
    // Retornar el número más grande.
    // Tu código:
+   var bigger = arrayOfNums[0];
+   for (i =0;i<arrayOfNums.length;i++){
+      if (arrayOfNums[i]>bigger){
+         bigger = arrayOfNums[i];
+      }
+   }
+   return bigger;
 }
 
 function multiplicarArgumentos() {
@@ -78,11 +109,32 @@ function multiplicarArgumentos() {
    // Si no se pasan argumentos retorna 0. Si se pasa un argumento, simplemente retórnalo.
    // [PISTA]: "arguments" es un arreglo.
    // Tu código:
+   var multiplica = 0;
+   if (arguments.length=== 0){
+      return 0;
+   }
+   else if(arguments.length=== 1){ 
+      return arguments[0];
+   }
+   else{
+      multiplica = arguments[0]*arguments[1];
+      for (i=2;i<arguments.length;i++){
+         multiplica = multiplica*arguments[i];
+      }
+   }
+   return multiplica;
 }
 
 function cuentoElementos(array) {
    // Desarrolla una función que retorne la cantidad de elementos del arreglo cuyo valor sea mayor que 18.
    // Tu código:
+   var mayorEdad = [];
+   for (i=0;i<array.length;i++){
+      if(array[i]> 18){
+         mayorEdad.push(array[i]);
+      }
+   }
+   return mayorEdad.length;
 }
 
 function diaDeLaSemana(numeroDeDia) {
@@ -90,12 +142,29 @@ function diaDeLaSemana(numeroDeDia) {
    // Realiza una función que, dado el número del día de la semana, retorne: "Es fin de semana"
    // si el día corresponde a "Sábado" o "Domingo", y "Es dia laboral" en caso contrario.
    // Tu código:
+   switch (numeroDeDia){
+      case 1: case 7:
+         return "Es fin de semana";
+      break;
+      case 2: case 3: case 4: case 5: case 6:
+         return 'Es dia laboral';
+      break;
+      default:
+         return 'Dia no contemplado';
+   }
 }
 
 function empiezaConNueve(num) {
    // Esta función recibe por parámetro un número.
    // Debe retornar true si el entero inicia con 9 y false en otro caso.
    // Tu código:
+   var inicia = num.toString();
+   if(inicia.slice(0,1) == 9){
+      return true;
+   }
+   else{
+      return false;
+   }
 }
 
 function todosIguales(array) {
